@@ -1,0 +1,84 @@
+# Telugu translations for io.elementary.upgrade package.
+# Copyright (C) 2021 THE io.elementary.upgrade'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.elementary.upgrade package.
+# Automatically generated, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.elementary.upgrade\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-01 11:12+0100\n"
+"PO-Revision-Date: 2021-01-01 11:12+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: te\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/MainWindow.vala:36
+#, c-format
+msgid "Upgrade %s"
+msgstr ""
+
+#: src/Utils.vala:120
+msgid "Test mode reboot"
+msgstr ""
+
+#: src/Views/AbstractUpgradeView.vala:52
+msgid "Cancel Upgrade"
+msgstr ""
+
+#: src/Views/AbstractUpgradeView.vala:61
+msgid "Test Mode"
+msgstr ""
+
+#: src/Views/ErrorView.vala:36
+msgid "Could Not Upgrade"
+msgstr ""
+
+#: src/Views/ErrorView.vala:44
+#, c-format
+msgid "Upgrade to %s failed. Your device may not restart properly."
+msgstr ""
+
+#: src/Views/ErrorView.vala:53
+msgid "Details"
+msgstr ""
+
+#: src/Views/ProgressView.vala:148
+msgid "Preparing to upgrade"
+msgstr ""
+
+#: src/Views/ProgressView.vala:152
+msgid "Setting new software channels"
+msgstr ""
+
+#: src/Views/ProgressView.vala:156
+msgid "Getting new packages"
+msgstr ""
+
+#: src/Views/ProgressView.vala:160
+msgid "Installing the upgrades"
+msgstr ""
+
+#: src/Views/ProgressView.vala:164
+msgid "Cleaning up"
+msgstr ""
+
+#: src/Views/SuccessView.vala:31
+msgid "Upgrade was successful"
+msgstr ""
+
+#: src/Views/SuccessView.vala:39
+#, c-format
+msgid "Upgrade to %s was successfull. You may want to restart your device now."
+msgstr ""
+
+#: src/Views/SuccessView.vala:59
+msgid "Restart Device"
+msgstr ""
+
+#: src/Views/WelcomeView.vala:49
+msgid "Continue"
+msgstr ""

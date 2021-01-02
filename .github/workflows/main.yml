@@ -1,0 +1,37 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    container:
+      image: elementary/docker:unstable
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      run: |
+        apt update
+        apt install -y libgranite-dev libpolkit-gobject-1-dev meson policykit-1 valac
+    - name: Build
+      env:
+        DESTDIR: out
+      run: |
+        meson build
+        ninja -C build
+        ninja -C build install
+
+  lint:
+
+    runs-on: ubuntu-latest
+    
+    container:
+      image: valalang/lint
+      
+    steps:
+    - uses: actions/checkout@v1
+    - name: Lint
+      run: io.elementary.vala-lint -d .

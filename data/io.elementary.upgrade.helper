@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+import argparse
+import fcntl
+import os
+import pathlib
+import re
+import shutil
+import subprocess
+import sys
+import time
+
+def is_locked(path):
+    with open(path, "w") as handle:
+        try:
+            fcntl.lockf(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            return False
+        except:
+            return True
+
+def wait_unlocked(path):
+    while is_locked(path):
+        print("Wait for \"{}\" to be unlocked".format(path))
+        time.sleep(1)
+
+def run(cmd, env={"DEBIAN_FRONTEND": "noninteractive", "LC_ALL": "C"}):
+    e = os.environ.copy()
+    for key, value in env.items():
+        e[key] = value
+
+    locks = [
+        "/var/cache/apt/archives/lock",
+        "/var/lib/apt/lists/lock",
+        "/var/lib/dpkg/lock-frontend",
+        "/var/lib/dpkg/lock",
+    ]
+    for lock in locks:
+        wait_unlocked(lock)
+
+    r = subprocess.call(cmd.split(" "), env=e)
+
+    if r != 0:
+        exit(r)
+
+def update():
+    run("apt-get update")
+
+def upgrade():
+    run("apt-get --assume-yes dist-upgrade")
+
+def clean():
+    run("apt-get --assume-yes clean")
+
+def autoclean():
+    run("apt-get --assume-yes autoclean")
+
+def autoremove():
+    run("apt-get --assume-yes autoremove")
+
+def prepare():
+    update()
+    upgrade()
+    clean()
+    autoclean()
+    autoremove()
+
+def update_channels(CURRENT, NEXT):
+    apt_folder = os.path.join("/", "etc", "apt")
+    r = re.compile("[deb|deb-src].* ({}).*$".format(CURRENT))
+
+    for p in pathlib.Path(apt_folder).rglob("*.list*"):
+        if not p.is_file():
+            continue
+
+        should_delete = False
+        should_update = False
+        with p.open("r") as f:
+            content = []
+            for line in f.read().split("\n"):
+                if r.match(line):
+                    should_update = True
+                    line = line.replace(CURRENT, NEXT)
+                    content.append(line)
+
+                    if "ppa.launchpad.net/elementary-os" in line:
+                        should_delete = True
+                    elif "packages.elementary.io" in line:
+                        should_delete = True
+
+        if should_delete:
+            p.unlink()
+            continue
+
+        if should_update:
+            with p.open("w") as f:
+                f.write("\n".join(content))
+
+    version_data = os.path.join("/", "usr", "share", "io.elementary.upgrade", "files", NEXT, "sources.list.d")
+    sources_list_d = os.path.join(apt_folder, "sources.list.d")
+    for p in pathlib.Path(version_data).rglob("*.list*"):
+        shutil.copy(str(p), sources_list_d)
+
+def download():
+    update()
+    run("apt-get --assume-yes --download-only dist-upgrade")
+
+def install():
+    run("apt-get --assume-yes --no-download --ignore-missing dist-upgrade")
+
+def clean_up():
+    clean()
+    autoclean()
+    autoremove()
+
+def main():
+    parser = argparse.ArgumentParser(description="Helper to upgrade elementary OS")
+    parser.add_argument("--prepare", action="store_true")
+    parser.add_argument("--update-channels", action="store_true")
+    parser.add_argument("--download", action="store_true")
+    parser.add_argument("--install", action="store_true")
+    parser.add_argument("--clean-up", action="store_true")
+
+    parser.add_argument("--current", nargs="?", default=None)
+    parser.add_argument("--next", nargs="?", default=None)
+
+    args = parser.parse_args()
+
+    if args.prepare:
+        return prepare()
+    elif args.update_channels and args.current and args.next:
+        return update_channels(args.current, args.next)
+    elif args.download:
+        return download()
+    elif args.install:
+        return install()
+    elif args.clean_up:
+        return clean_up()
+
+if __name__ == "__main__":
+    main()

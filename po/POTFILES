@@ -1,0 +1,12 @@
+src/Application.vala
+src/Helpers/Inhibitor.vala
+src/MainWindow.vala
+src/Upgrade.vala
+src/Utils.vala
+src/Views/AbstractUpgradeView.vala
+src/Views/ErrorView.vala
+src/Views/ProgressView.vala
+src/Views/SuccessView.vala
+src/Views/UpToDateView.vala
+src/Views/WelcomeView.vala
+src/Widgets/Terminal.vala
