@@ -22,7 +22,7 @@ def wait_unlocked(path):
         print("Wait for \"{}\" to be unlocked".format(path))
         time.sleep(1)
 
-def run(cmd, env={"DEBIAN_FRONTEND": "noninteractive", "LC_ALL": "C"}):
+def run(cmd, env={"DEBIAN_FRONTEND": "noninteractive", "LC_ALL": "C"}, retries=3):
     e = os.environ.copy()
     for key, value in env.items():
         e[key] = value
@@ -36,7 +36,11 @@ def run(cmd, env={"DEBIAN_FRONTEND": "noninteractive", "LC_ALL": "C"}):
     for lock in locks:
         wait_unlocked(lock)
 
-    r = subprocess.call(cmd.split(" "), env=e)
+    for i in range(retries):
+        r = subprocess.call(cmd.split(" "), env=e)
+
+        if r == 0:
+            break
 
     if r != 0:
         exit(r)
