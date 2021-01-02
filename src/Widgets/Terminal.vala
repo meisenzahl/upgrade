@@ -38,13 +38,14 @@ public class Upgrade.Terminal : Gtk.ScrolledWindow {
     }
 
     construct {
-        view = new Gtk.TextView.with_buffer (buffer);
-        view.cursor_visible = true;
-        view.editable = false;
-        view.margin_start = view.margin_end = 6;
-        view.monospace = true;
-        view.pixels_below_lines = 3;
-        view.wrap_mode = Gtk.WrapMode.WORD;
+        view = new Gtk.TextView.with_buffer (buffer) {
+            cursor_visible = true,
+            editable = false,
+            margin_start = margin_end = 6,
+            monospace = true,
+            pixels_below_lines = 3,
+            wrap_mode = Gtk.WrapMode.WORD
+        };
 
         hscrollbar_policy = Gtk.PolicyType.NEVER;
         expand = true;
