@@ -36,17 +36,19 @@ public abstract class AbstractUpgradeView : Gtk.Grid {
     }
 
     construct {
-        content_area = new Gtk.Grid ();
-        content_area.column_spacing = 12;
-        content_area.row_spacing = 12;
-        content_area.expand = true;
-        content_area.orientation = Gtk.Orientation.VERTICAL;
+        content_area = new Gtk.Grid () {
+            column_spacing = 12,
+            row_spacing = 12,
+            expand = true,
+            orientation = Gtk.Orientation.VERTICAL
+        };
 
-        action_area = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-        action_area.margin_end = 10;
-        action_area.margin_start = 10;
-        action_area.spacing = 6;
-        action_area.layout_style = Gtk.ButtonBoxStyle.END;
+        action_area = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL) {
+            margin_end = 10,
+            margin_start = 10,
+            spacing = 6,
+            layout_style = Gtk.ButtonBoxStyle.END
+        };
 
         if (cancellable) {
             var cancel_button = new Gtk.Button.with_label (_("Cancel Upgrade"));

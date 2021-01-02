@@ -59,7 +59,7 @@ public class Inhibitor : Object {
         if (screensaver_iface != null && !inhibited) {
             try {
                 inhibited = true;
-                inhibit_cookie = screensaver_iface.inhibit ("Installer", "Installing");
+                inhibit_cookie = screensaver_iface.inhibit ("Upgrade", "Upgrading");
                 simulate_activity ();
                 debug ("Inhibiting screen");
             } catch (Error e) {

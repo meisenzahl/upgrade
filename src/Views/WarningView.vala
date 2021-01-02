@@ -29,28 +29,32 @@ public class WarningView : AbstractUpgradeView {
     }
 
     construct {
-        var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG);
-        image.vexpand = true;
+        var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG) {
+            vexpand = true
+        };
 
-        var primary_label = new Gtk.Label (_("Make sure you’re ready to upgrade"));
-        primary_label.halign = Gtk.Align.START;
-        primary_label.max_width_chars = 60;
-        primary_label.wrap = true;
-        primary_label.xalign = 0;
+        var primary_label = new Gtk.Label (_("Make sure you’re ready to upgrade")) {
+            halign = Gtk.Align.START,
+            max_width_chars = 60,
+            wrap = true,
+            xalign = 0
+        };
         primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var secondary_label = new Gtk.Label (
             _("· Before you upgrade, we recommend that you back up your data") + "\n" +
             _("· To prevent data loss close all open applications and documents")
-        );
-        secondary_label.max_width_chars = 60;
-        secondary_label.wrap = true;
-        secondary_label.xalign = 0;
-        secondary_label.use_markup = true;
+        ) {
+            max_width_chars = 60,
+            wrap = true,
+            xalign = 0,
+            use_markup = true
+        };
 
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 12;
-        grid.valign = Gtk.Align.CENTER;
+        var grid = new Gtk.Grid () {
+            row_spacing = 12,
+            valign = Gtk.Align.CENTER
+        };
         grid.attach (primary_label, 0, 0, 1, 1);
         grid.attach (secondary_label, 0, 1, 1, 1);
 

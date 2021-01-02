@@ -25,27 +25,31 @@ public class SuccessView : AbstractUpgradeView {
     }
 
     construct {
-        var image = new Gtk.Image.from_icon_name ("process-completed", Gtk.IconSize.DIALOG);
-        image.vexpand = true;
+        var image = new Gtk.Image.from_icon_name ("process-completed", Gtk.IconSize.DIALOG) {
+            vexpand = true
+        };
 
-        var primary_label = new Gtk.Label (_("Upgrade was successful"));
-        primary_label.halign = Gtk.Align.START;
-        primary_label.max_width_chars = 60;
-        primary_label.wrap = true;
-        primary_label.xalign = 0;
+        var primary_label = new Gtk.Label (_("Upgrade was successful")) {
+            halign = Gtk.Align.START,
+            max_width_chars = 60,
+            wrap = true,
+            xalign = 0
+        };
         primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var name = Upgrade.App.test_mode ? "%s Next".printf (Utils.get_name ()) : Utils.get_pretty_name ();
         var secondary_label = new Gtk.Label (
             _("Upgrade to %s was successfull. You may want to restart your device now.").printf (name)
-        );
-        secondary_label.max_width_chars = 60;
-        secondary_label.wrap = true;
-        secondary_label.xalign = 0;
+        ) {
+            max_width_chars = 60,
+            wrap = true,
+            xalign = 0
+        };
 
-        var grid = new Gtk.Grid ();
-        grid.row_spacing = 12;
-        grid.valign = Gtk.Align.CENTER;
+        var grid = new Gtk.Grid () {
+            row_spacing = 12,
+            valign = Gtk.Align.CENTER
+        };
         grid.attach (primary_label, 0, 0, 1, 1);
         grid.attach (secondary_label, 0, 1, 1, 1);
 

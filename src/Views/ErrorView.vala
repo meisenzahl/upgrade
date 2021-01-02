@@ -30,29 +30,33 @@ public class ErrorView : AbstractUpgradeView {
     }
 
     construct {
-        var image = new Gtk.Image.from_icon_name ("dialog-error", Gtk.IconSize.DIALOG);
-        image.valign = Gtk.Align.END;
+        var image = new Gtk.Image.from_icon_name ("dialog-error", Gtk.IconSize.DIALOG) {
+            valign = Gtk.Align.END
+        };
 
-        var title_label = new Gtk.Label (_("Could Not Upgrade"));
-        title_label.halign = Gtk.Align.CENTER;
-        title_label.max_width_chars = 60;
-        title_label.valign = Gtk.Align.START;
-        title_label.wrap = true;
-        title_label.xalign = 0;
+        var title_label = new Gtk.Label (_("Could Not Upgrade")) {
+            halign = Gtk.Align.CENTER,
+            max_width_chars = 60,
+            valign = Gtk.Align.START,
+            wrap = true,
+            xalign = 0
+        };
         title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var description_label = new Gtk.Label (_("Upgrade to %s failed. Your device may not restart properly.").printf (Utils.get_next_pretty_name ()));
-        description_label.max_width_chars = 60;
-        description_label.wrap = true;
-        description_label.xalign = 0;
-        description_label.use_markup = true;
+        var description_label = new Gtk.Label (_("Upgrade to %s failed. Your device may not restart properly.").printf (Utils.get_next_pretty_name ())) {
+            max_width_chars = 60,
+            wrap = true,
+            xalign = 0,
+            use_markup = true
+        };
 
-        var terminal_button = new Gtk.ToggleButton ();
-        terminal_button.always_show_image = true;
-        terminal_button.halign = Gtk.Align.START;
-        terminal_button.label = _("Details");
-        terminal_button.margin_top = 18;
-        terminal_button.image = new Gtk.Image.from_icon_name ("utilities-terminal-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+        var terminal_button = new Gtk.ToggleButton () {
+            always_show_image = true,
+            halign = Gtk.Align.START,
+            label = _("Details"),
+            margin_top = 18,
+            image = new Gtk.Image.from_icon_name ("utilities-terminal-symbolic", Gtk.IconSize.SMALL_TOOLBAR)
+        };
         terminal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         var terminal_view = new Upgrade.Terminal (buffer);
@@ -60,10 +64,11 @@ public class ErrorView : AbstractUpgradeView {
         var terminal_revealer = new Gtk.Revealer ();
         terminal_revealer.add (terminal_view);
 
-        var grid = new Gtk.Grid ();
-        grid.orientation = Gtk.Orientation.VERTICAL;
-        grid.row_spacing = 6;
-        grid.valign = Gtk.Align.CENTER;
+        var grid = new Gtk.Grid () {
+            orientation = Gtk.Orientation.VERTICAL,
+            row_spacing = 6,
+            valign = Gtk.Align.CENTER
+        };
         grid.add (description_label);
         grid.add (terminal_button);
         grid.add (terminal_revealer);
