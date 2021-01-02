@@ -21,6 +21,7 @@ app_sources = [
 ]
 
 daemon_sources = [
+    'Services/DBusServer.vala',
     'Daemon.vala',
 ]
 
@@ -40,7 +41,7 @@ executable(
 )
 
 executable(
-    meson.project_name() + 'daemon',
+    meson.project_name() + '.daemon',
     common_sources,
     daemon_sources,
     config_file,
