@@ -20,10 +20,16 @@
  */
 
 public class Upgrade.Daemon : GLib.Application {
+    public const OptionEntry[] UPGRADE_OPTIONS = {
+        { "test", 't', 0, OptionArg.NONE, out Config.test_mode, "Non-destructive test mode", null},
+        { null }
+    };
+
     private uint registration_id = 0;
 
     construct {
         application_id = "io.elementary.upgrade";
+        add_main_option_entries (UPGRADE_OPTIONS);
     }
 
     public override void activate () {
