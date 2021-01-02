@@ -20,90 +20,32 @@
  */
 
 public class Upgrade.DistUpgrade {
-    public enum Step {
-        PREPARE,
-        UPDATE_CHANNELS,
-        DOWNLOAD,
-        INSTALL,
-        CLEAN_UP
-    }
-
-    public class Status : Object {
-        public int percent { get; set; default = 0; }
-        public Step step { get; set; }
-    }
-
     public signal void on_standard_output (string line);
     public signal void on_standard_error (string line);
     public signal void on_error ();
     public signal void on_status (Status status);
 
-    public void upgrade () {
-        var status = new Status () {
-            step = Step.PREPARE,
-            percent = 0
-        };
-
-        info ("Preparing to upgrade");
-        on_status (status);
-        if (!prepare ()) {
-            on_error ();
-            return;
-        }
-
-        status.percent = 100;
-        on_status (status);
-
-        info ("Setting new software channels");
-        status.step = Step.UPDATE_CHANNELS;
-        status.percent = 0;
-        on_status (status);
-        if (!update_channels ()) {
-            on_error ();
-            return;
-        }
-
-        status.percent = 100;
-        on_status (status);
-
-        info ("Getting new packages");
-        status.step = Step.DOWNLOAD;
-        status.percent = 0;
-        on_status (status);
-        if (!download ()) {
-            on_error ();
-            return;
-        }
-
-        status.percent = 100;
-        on_status (status);
-
-        info ("Installing the upgrades");
-        status.step = Step.INSTALL;
-        status.percent = 0;
-        on_status (status);
-        if (!install ()) {
-            on_error ();
-            return;
-        }
-
-        status.percent = 100;
-        on_status (status);
-
-        info ("Cleaning up");
-        status.step = Step.CLEAN_UP;
-        status.percent = 0;
-        on_status (status);
-        if (!clean_up ()) {
-            on_error ();
-            return;
-        }
-
-        status.percent = 100;
-        on_status (status);
-    }
-
     private static Polkit.Permission? permission = null;
+
+    public void upgrade () {
+        if (!authenticate ()) {
+            var message = "Unable to authenticate";
+            warning (message);
+            on_standard_error (message);
+            return;
+        }
+
+        var cmd = "upgrade";
+        if (App.test_mode) {
+            cmd = "test";
+        }
+
+        if (!run ("pkexec %s/io.elementary.upgrade.helper --%s --current %s --next %s".printf (
+            Build.PKGDATADIR, cmd, Utils.get_current_channel (), Utils.get_next_channel ())
+        )) {
+            on_error ();
+        }
+    }
 
     private bool authenticate () {
         if (permission == null) {
@@ -139,6 +81,13 @@ public class Upgrade.DistUpgrade {
         try {
             string line;
             channel.read_line (out line, null, null);
+
+            Status status;
+            if (StatusParser.get_instance ().get_status (line, out status)) {
+                on_status (status);
+                return true;
+            }
+
             switch (stream_name) {
                 case "stdout":
                     debug ("%s", line);
@@ -209,60 +158,5 @@ public class Upgrade.DistUpgrade {
             warning ("Error: %s", e.message);
             return false;
         }
-    }
-
-    public bool prepare () {
-        if (!authenticate ()) {
-            var message = "Could not authenticate";
-            warning (message);
-            on_standard_error (message);
-            return false;
-        }
-
-        return run ("pkexec %s/io.elementary.upgrade.helper --prepare".printf (Build.PKGDATADIR));
-    }
-
-    public bool update_channels () {
-        if (!authenticate ()) {
-            var message = "Could not authenticate";
-            warning (message);
-            on_standard_error (message);
-            return false;
-        }
-
-        return run ("pkexec %s/io.elementary.upgrade.helper --update-channels --current %s --next %s".printf (Build.PKGDATADIR, Utils.get_current_channel (), Utils.get_next_channel ()));
-    }
-
-    public bool download () {
-        if (!authenticate ()) {
-            var message = "Could not authenticate";
-            warning (message);
-            on_standard_error (message);
-            return false;
-        }
-
-        return run ("pkexec %s/io.elementary.upgrade.helper --download".printf (Build.PKGDATADIR));
-    }
-
-    public bool install () {
-        if (!authenticate ()) {
-            var message = "Could not authenticate";
-            warning (message);
-            on_standard_error (message);
-            return false;
-        }
-
-        return run ("pkexec %s/io.elementary.upgrade.helper --install".printf (Build.PKGDATADIR));
-    }
-
-    public bool clean_up () {
-        if (!authenticate ()) {
-            var message = "Could not authenticate";
-            warning (message);
-            on_standard_error (message);
-            return false;
-        }
-
-        return run ("pkexec %s/io.elementary.upgrade.helper --clean-up".printf (Build.PKGDATADIR));
     }
 }
