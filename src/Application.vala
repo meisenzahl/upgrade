@@ -21,11 +21,9 @@
 
 public class Upgrade.App : Gtk.Application {
     public const OptionEntry[] UPGRADE_OPTIONS = {
-        { "test", 't', 0, OptionArg.NONE, out App.test_mode, "Non-destructive test mode", null},
+        { "test", 't', 0, OptionArg.NONE, out Config.test_mode, "Non-destructive test mode", null},
         { null }
     };
-
-    public static bool test_mode;
 
     construct {
         application_id = "io.elementary.upgrade";

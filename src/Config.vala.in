@@ -1,4 +1,6 @@
-namespace Build {
+namespace Config {
     public const string PKGDATADIR = "@PKGDATADIR@";
     public const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";
+
+    public bool test_mode;
 }
