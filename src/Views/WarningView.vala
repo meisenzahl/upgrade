@@ -42,8 +42,8 @@ public class WarningView : AbstractUpgradeView {
         primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
         var secondary_label = new Gtk.Label (
-            _("· Before you upgrade, we recommend that you back up your data") + "\n" +
-            _("· To prevent data loss close all open applications and documents")
+            "· " + _("Before you upgrade, we recommend that you back up your data") + "\n" +
+            "· " + _("To prevent data loss close all open applications and documents")
         ) {
             max_width_chars = 60,
             wrap = true,

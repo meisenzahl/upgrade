@@ -7,76 +7,92 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.upgrade\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-01 11:12+0100\n"
+"POT-Creation-Date: 2021-01-02 10:06+0100\n"
 "PO-Revision-Date: 2021-01-01 11:12+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: or\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.vala:36
+#: src/MainWindow.vala:37
 #, c-format
 msgid "Upgrade %s"
 msgstr ""
 
-#: src/Utils.vala:120
+#: src/Utils.vala:124
 msgid "Test mode reboot"
 msgstr ""
 
-#: src/Views/AbstractUpgradeView.vala:52
+#: src/Views/AbstractUpgradeView.vala:54
 msgid "Cancel Upgrade"
 msgstr ""
 
-#: src/Views/AbstractUpgradeView.vala:61
+#: src/Views/AbstractUpgradeView.vala:63
 msgid "Test Mode"
 msgstr ""
 
-#: src/Views/ErrorView.vala:36
+#: src/Views/ErrorView.vala:37
 msgid "Could Not Upgrade"
 msgstr ""
 
-#: src/Views/ErrorView.vala:44
+#: src/Views/ErrorView.vala:46
 #, c-format
 msgid "Upgrade to %s failed. Your device may not restart properly."
 msgstr ""
 
-#: src/Views/ErrorView.vala:53
+#: src/Views/ErrorView.vala:56
 msgid "Details"
 msgstr ""
 
-#: src/Views/ProgressView.vala:148
+#: src/Views/ProgressView.vala:175
 msgid "Preparing to upgrade"
 msgstr ""
 
-#: src/Views/ProgressView.vala:152
+#: src/Views/ProgressView.vala:179
 msgid "Setting new software channels"
 msgstr ""
 
-#: src/Views/ProgressView.vala:156
+#: src/Views/ProgressView.vala:183
 msgid "Getting new packages"
 msgstr ""
 
-#: src/Views/ProgressView.vala:160
+#: src/Views/ProgressView.vala:187
 msgid "Installing the upgrades"
 msgstr ""
 
-#: src/Views/ProgressView.vala:164
+#: src/Views/ProgressView.vala:191
 msgid "Cleaning up"
 msgstr ""
 
-#: src/Views/SuccessView.vala:31
+#: src/Views/SuccessView.vala:32
 msgid "Upgrade was successful"
 msgstr ""
 
-#: src/Views/SuccessView.vala:39
+#: src/Views/SuccessView.vala:42
 #, c-format
 msgid "Upgrade to %s was successfull. You may want to restart your device now."
 msgstr ""
 
-#: src/Views/SuccessView.vala:59
+#: src/Views/SuccessView.vala:64
 msgid "Restart Device"
+msgstr ""
+
+#: src/Views/WarningView.vala:36
+msgid "Make sure you’re ready to upgrade"
+msgstr ""
+
+#: src/Views/WarningView.vala:45
+msgid "Before you upgrade, we recommend that you back up your data"
+msgstr ""
+
+#: src/Views/WarningView.vala:46
+msgid "To prevent data loss close all open applications and documents"
+msgstr ""
+
+#: src/Views/WarningView.vala:69
+msgid "Start upgrade"
 msgstr ""
 
 #: src/Views/WelcomeView.vala:49
