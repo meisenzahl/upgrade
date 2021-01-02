@@ -1,5 +1,8 @@
 sources = [
     'Helpers/Inhibitor.vala',
+    'Helpers/StatusParser.vala',
+    'Objects/Status.vala',
+    'Objects/Step.vala',
     'Views/AbstractUpgradeView.vala',
     'Views/ErrorView.vala',
     'Views/ProgressView.vala',
@@ -24,6 +27,6 @@ executable(
     meson.project_name(),
     sources,
     config_file,
-    dependencies : dependencies,
+    dependencies: dependencies,
     install: true
 )

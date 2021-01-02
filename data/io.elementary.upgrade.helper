@@ -22,6 +22,10 @@ def wait_unlocked(path):
         print("Wait for \"{}\" to be unlocked".format(path))
         time.sleep(1)
 
+def print_status(step, percent):
+    sys.stdout.write("io.elementary.upgrade.{}: {:d}%\n".format(step, percent))
+    sys.stdout.flush()
+
 def run(cmd, env={"DEBIAN_FRONTEND": "noninteractive", "LC_ALL": "C"}, retries=3):
     e = os.environ.copy()
     for key, value in env.items():
@@ -36,7 +40,7 @@ def run(cmd, env={"DEBIAN_FRONTEND": "noninteractive", "LC_ALL": "C"}, retries=3
     for lock in locks:
         wait_unlocked(lock)
 
-    for i in range(retries):
+    for _ in range(retries):
         r = subprocess.call(cmd.split(" "), env=e)
 
         if r == 0:
@@ -48,7 +52,7 @@ def run(cmd, env={"DEBIAN_FRONTEND": "noninteractive", "LC_ALL": "C"}, retries=3
 def update():
     run("apt-get update")
 
-def upgrade():
+def dist_upgrade():
     run("apt-get --assume-yes dist-upgrade")
 
 def clean():
@@ -61,19 +65,37 @@ def autoremove():
     run("apt-get --assume-yes autoremove")
 
 def prepare():
+    print_status("PREPARE", 0)
     update()
-    upgrade()
+
+    print_status("PREPARE", 20)
+    dist_upgrade()
+
+    print_status("PREPARE", 40)
     clean()
+
+    print_status("PREPARE", 60)
     autoclean()
+
+    print_status("PREPARE", 80)
     autoremove()
 
+    print_status("PREPARE", 100)
+
 def update_channels(CURRENT, NEXT):
+    print_status("UPDATE_CHANNELS", 0)
     apt_folder = os.path.join("/", "etc", "apt")
     r = re.compile("[deb|deb-src].* ({}).*$".format(CURRENT))
 
+    sources = []
     for p in pathlib.Path(apt_folder).rglob("*.list*"):
         if not p.is_file():
             continue
+
+        sources.append(p)
+
+    for i, p in enumerate(sources):
+        print_status("UPDATE_CHANNELS", int(i / (len(sources) + 1) * 100))
 
         should_delete = False
         should_update = False
@@ -103,20 +125,63 @@ def update_channels(CURRENT, NEXT):
     for p in pathlib.Path(version_data).rglob("*.list*"):
         shutil.copy(str(p), sources_list_d)
 
+    print_status("UPDATE_CHANNELS", 100)
+
 def download():
+    print_status("DOWNLOAD", 0)
     update()
+
+    print_status("DOWNLOAD", 50)
     run("apt-get --assume-yes --download-only dist-upgrade")
 
+    print_status("DOWNLOAD", 100)
+
 def install():
+    print_status("INSTALL", 0)
     run("apt-get --assume-yes --no-download --ignore-missing dist-upgrade")
+    print_status("INSTALL", 100)
 
 def clean_up():
+    print_status("CLEAN_UP", 0)
     clean()
+
+    print_status("CLEAN_UP", 33)
     autoclean()
+
+    print_status("CLEAN_UP", 66)
     autoremove()
+
+    print_status("CLEAN_UP", 100)
+
+def upgrade(CURRENT, NEXT):
+    prepare()
+    update_channels(CURRENT, NEXT)
+    download()
+    install()
+    clean_up()
+
+def test(CURRENT, NEXT):
+    import random
+
+    steps = [
+        "PREPARE",
+        "UPDATE_CHANNELS",
+        "DOWNLOAD",
+        "INSTALL",
+        "CLEAN_UP",
+    ]
+    for step in steps:
+        for percent in range(101):
+            print_status(step, percent)
+
+            time.sleep(0.001 * random.randrange(100))
 
 def main():
     parser = argparse.ArgumentParser(description="Helper to upgrade elementary OS")
+
+    parser.add_argument("--upgrade", action="store_true")
+    parser.add_argument("--test", action="store_true")
+
     parser.add_argument("--prepare", action="store_true")
     parser.add_argument("--update-channels", action="store_true")
     parser.add_argument("--download", action="store_true")
@@ -128,7 +193,11 @@ def main():
 
     args = parser.parse_args()
 
-    if args.prepare:
+    if args.upgrade and args.current and args.next:
+        upgrade(args.current, args.next)
+    elif args.test and args.current and args.next:
+        test(args.current, args.next)
+    elif args.prepare:
         return prepare()
     elif args.update_channels and args.current and args.next:
         return update_channels(args.current, args.next)

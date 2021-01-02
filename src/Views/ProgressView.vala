@@ -111,21 +111,6 @@ public class ProgressView : AbstractUpgradeView {
     }
 
     public void start_upgrade () {
-        if (Upgrade.App.test_mode) {
-            new Thread<void*> (null, () => {
-                fake_status (Upgrade.DistUpgrade.Step.PREPARE);
-                fake_status (Upgrade.DistUpgrade.Step.UPDATE_CHANNELS);
-                fake_status (Upgrade.DistUpgrade.Step.DOWNLOAD);
-                fake_status (Upgrade.DistUpgrade.Step.INSTALL);
-                fake_status (Upgrade.DistUpgrade.Step.CLEAN_UP);
-                return null;
-            });
-        } else {
-            real_upgrade ();
-        }
-    }
-
-    public void real_upgrade () {
         var upgrade = new Upgrade.DistUpgrade ();
         upgrade.on_standard_output.connect (upgrade_standard_output_callback);
         upgrade.on_standard_error.connect (upgrade_standard_error_callback);
@@ -139,17 +124,6 @@ public class ProgressView : AbstractUpgradeView {
         });
     }
 
-    private void fake_status (Upgrade.DistUpgrade.Step step) {
-        for (var percent = 0; percent <= 100; percent++) {
-            var status = new Upgrade.DistUpgrade.Status () {
-                step = step,
-                percent = percent
-            };
-            upgrade_status_callback (status);
-            GLib.Thread.usleep (10000);
-        }
-    }
-
     private void upgrade_standard_output_callback (string line) {
         terminal_view.buffer.text += line;
     }
@@ -161,9 +135,9 @@ public class ProgressView : AbstractUpgradeView {
         terminal_view.buffer.insert_markup (ref end_iter, "<span color=\"red\">%s</span>".printf (line), -1);
     }
 
-    private void upgrade_status_callback (Upgrade.DistUpgrade.Status status) {
+    private void upgrade_status_callback (Upgrade.Status status) {
         Idle.add (() => {
-            if (status.percent == 100 && status.step == Upgrade.DistUpgrade.Step.CLEAN_UP) {
+            if (status.percent == 100 && status.step == Upgrade.Step.CLEAN_UP) {
                 active = false;
                 on_success ();
                 return GLib.Source.REMOVE;
@@ -171,29 +145,29 @@ public class ProgressView : AbstractUpgradeView {
 
             double fraction = ((double) status.percent) / (100.0 * NUM_STEP);
             switch (status.step) {
-                case Upgrade.DistUpgrade.Step.PREPARE:
+                case Upgrade.Step.PREPARE:
                     progress_label.label = _("Preparing to upgrade");
                     break;
-                case Upgrade.DistUpgrade.Step.UPDATE_CHANNELS:
+                case Upgrade.Step.UPDATE_CHANNELS:
                     fraction += 2 * (1.0 / NUM_STEP);
                     progress_label.label = _("Setting new software channels");
                     break;
-                case Upgrade.DistUpgrade.Step.DOWNLOAD:
+                case Upgrade.Step.DOWNLOAD:
                     fraction += 3 * (1.0 / NUM_STEP);
                     progress_label.label = _("Getting new packages");
                     break;
-                case Upgrade.DistUpgrade.Step.INSTALL:
+                case Upgrade.Step.INSTALL:
                     fraction += 4 * (1.0 / NUM_STEP);
                     progress_label.label = _("Installing the upgrades");
                     break;
-                case Upgrade.DistUpgrade.Step.CLEAN_UP:
+                case Upgrade.Step.CLEAN_UP:
                     fraction += 5 * (1.0 / NUM_STEP);
                     progress_label.label = _("Cleaning up");
                     break;
             }
 
             active = true;
-            //  progress_label.label += " (%d%%)".printf (status.percent); TODO: show meaningful percentage
+            progress_label.label += " (%d%%)".printf (status.percent);
             progressbar.fraction = fraction;
             return GLib.Source.REMOVE;
         });
