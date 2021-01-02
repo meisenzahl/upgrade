@@ -8,5 +8,6 @@ src/Views/ErrorView.vala
 src/Views/ProgressView.vala
 src/Views/SuccessView.vala
 src/Views/UpToDateView.vala
+src/Views/WarningView.vala
 src/Views/WelcomeView.vala
 src/Widgets/Terminal.vala
