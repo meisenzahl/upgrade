@@ -37,7 +37,7 @@ public class SuccessView : AbstractUpgradeView {
         };
         primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var name = Upgrade.App.test_mode ? "%s Next".printf (Utils.get_name ()) : Utils.get_pretty_name ();
+        var name = Config.test_mode ? "%s Next".printf (Utils.get_name ()) : Utils.get_pretty_name ();
         var secondary_label = new Gtk.Label (
             _("Upgrade to %s was successfull. You may want to restart your device now.").printf (name)
         ) {

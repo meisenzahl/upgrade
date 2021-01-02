@@ -19,29 +19,46 @@
  * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
  */
 
-public class Upgrade.App : Gtk.Application {
+public class Upgrade.Daemon : GLib.Application {
     public const OptionEntry[] UPGRADE_OPTIONS = {
         { "test", 't', 0, OptionArg.NONE, out Config.test_mode, "Non-destructive test mode", null},
         { null }
     };
 
+    private uint registration_id = 0;
+
     construct {
         application_id = "io.elementary.upgrade";
-        flags = ApplicationFlags.FLAGS_NONE;
-        Intl.setlocale (LocaleCategory.ALL, "");
         add_main_option_entries (UPGRADE_OPTIONS);
     }
 
     public override void activate () {
-        var window = new MainWindow ();
-        window.show_all ();
-        this.add_window (window);
-
-        Inhibitor.get_instance ().inhibit ();
+        hold ();
     }
-}
 
-public static int main (string[] args) {
-    var application = new Upgrade.App ();
-    return application.run (args);
+    public override bool dbus_register (DBusConnection connection, string object_path) throws Error {
+        base.dbus_register (connection, object_path);
+
+        try {
+            registration_id = connection.register_object ("/io/elementary/upgrade", DBusServer.get_default ());
+        } catch (Error e) {
+            warning (e.message);
+        }
+
+        return true;
+    }
+
+    public override void dbus_unregister (DBusConnection connection, string object_path) {
+        if (registration_id != 0) {
+            connection.unregister_object (registration_id);
+            registration_id = 0;
+        }
+
+        base.dbus_unregister (connection, object_path);
+    }
+
+    public static int main (string[] args) {
+        var daemon = new Daemon ();
+        return daemon.run (args);
+    }
 }

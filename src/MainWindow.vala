@@ -46,7 +46,7 @@ public class Upgrade.MainWindow : Gtk.Window {
             transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT
         };
 
-        if (!Upgrade.App.test_mode && Utils.is_up_to_date ()) {
+        if (!Config.test_mode && Utils.is_up_to_date ()) {
             var up_to_date_view = new UpToDateView ();
 
             up_to_date_view.cancel.connect (() => {

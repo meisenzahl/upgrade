@@ -49,7 +49,7 @@ namespace Utils {
     }
 
     public static string? get_next_pretty_name () {
-        if (Upgrade.App.test_mode) {
+        if (Config.test_mode) {
             return "%s Next".printf (get_name ());
         }
 
@@ -120,7 +120,7 @@ namespace Utils {
     }
 
     private static void restart () {
-        if (Upgrade.App.test_mode) {
+        if (Config.test_mode) {
             critical (_("Test mode reboot"));
             Process.exit (0);
         } else {
