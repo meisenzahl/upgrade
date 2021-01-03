@@ -20,41 +20,9 @@
  */
 
 [DBus (name="io.elementary.upgrade")]
-public class DBusServer : Object {
-    private Upgrade.DistUpgrade dist_upgrade;
-    private bool is_upgrade_running = false;
-
-    private static GLib.Once<DBusServer> instance;
-    public static unowned DBusServer get_default () {
-        return instance.once (() => { return new DBusServer (); });
-    }
-
-    private DBusServer () {
-        dist_upgrade = new Upgrade.DistUpgrade ();
-        dist_upgrade.on_error.connect (upgrade_error_callback);
-        dist_upgrade.on_status.connect (upgrade_status_callback);
-    }
-
+public interface UpgradeInterface : Object {
     public signal void status_changed (string step, int percent);
-
     public signal void error ();
 
-    public void upgrade () throws Error {
-        new Thread<void*> (null, () => {
-            if (!is_upgrade_running) {
-                is_upgrade_running = true;
-                dist_upgrade.upgrade ();
-            }
-
-            return null;
-        });
-    }
-
-    private void upgrade_error_callback () {
-        error ();
-    }
-
-    private void upgrade_status_callback (Upgrade.Status status) {
-        status_changed (status.step.to_string (), status.percent);
-    }
+    public abstract void upgrade () throws Error;
 }

@@ -53,7 +53,7 @@ public class Upgrade.Daemon : GLib.Application {
         base.dbus_register (connection, object_path);
 
         try {
-            registration_id = connection.register_object ("/io/elementary/upgrade/daemon", DBusServer.get_default ());
+            registration_id = connection.register_object ("/io/elementary/upgrade/daemon", UpgradeService.get_default ());
         } catch (Error e) {
             warning (e.message);
         }

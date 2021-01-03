@@ -1,6 +1,7 @@
 common_sources = [
     'Helpers/Inhibitor.vala',
     'Helpers/StatusParser.vala',
+    'Interfaces/UpgradeInterface.vala',
     'Objects/Status.vala',
     'Objects/Step.vala',
     'Upgrade.vala',
@@ -8,12 +9,13 @@ common_sources = [
 ]
 
 daemon_sources = [
-    'Services/DBusServer.vala',
+    'Services/UpgradeService.vala',
     'Daemon.vala',
     'SessionManager.vala',
 ]
 
 plug_sources = [
+    'Clients/UpgradeClient.vala',
     'Views/AbstractUpgradeView.vala',
     'Views/ErrorView.vala',
     'Views/ProgressView.vala',
@@ -47,5 +49,5 @@ shared_module(
     config_file,
     dependencies: plug_dependencies,
     install: true,
-    install_dir : join_paths(switchboard_plugsdir, 'personal')
+    install_dir : join_paths(switchboard_plugsdir, 'system')
 )
