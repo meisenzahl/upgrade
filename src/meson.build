@@ -26,6 +26,10 @@ daemon_sources = [
     'SessionManager.vala',
 ]
 
+plug_sources = [
+    'Plug.vala',
+]
+
 config_file = configure_file(
     input: 'Config.vala.in',
     output: '@BASENAME@',
@@ -48,4 +52,14 @@ executable(
     config_file,
     dependencies: daemon_dependencies,
     install: true
+)
+
+shared_module(
+    'io.elementary.switchboard.upgrade',
+    common_sources,
+    plug_sources,
+    config_file,
+    dependencies: plug_dependencies,
+    install: true,
+    install_dir : join_paths(switchboard_plugsdir, 'personal')
 )
