@@ -20,13 +20,6 @@ switchboard_dep = dependency('switchboard-2.0')
 polkit_actiondir = polkit_dep.get_pkgconfig_variable('actiondir', define_variable: ['prefix', prefix])
 switchboard_plugsdir = switchboard_dep.get_pkgconfig_variable('plugsdir', define_variable: ['libdir', libdir])
 
-app_dependencies = [
-    granite_dep,
-    gtk_dep,
-    polkit_dep,
-    posix_dep,
-]
-
 daemon_dependencies = [
     polkit_dep,
     posix_dep,
