@@ -29,6 +29,11 @@ i18n.merge_file(
     install: true
 )
 
+install_data(
+    meson.project_name() + '.daemon.desktop',
+    install_dir: join_paths(get_option('sysconfdir'), 'xdg', 'autostart')
+)
+
 install_subdir(
     'files',
     install_dir: pkgdatadir
