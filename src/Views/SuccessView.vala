@@ -20,10 +20,6 @@
  */
 
 public class SuccessView : AbstractUpgradeView {
-    public SuccessView () {
-        Object (cancellable: false);
-    }
-
     construct {
         var image = new Gtk.Image.from_icon_name ("process-completed", Gtk.IconSize.DIALOG) {
             vexpand = true

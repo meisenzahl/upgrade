@@ -27,6 +27,14 @@ daemon_sources = [
 ]
 
 plug_sources = [
+    'Views/AbstractUpgradeView.vala',
+    'Views/ErrorView.vala',
+    'Views/ProgressView.vala',
+    'Views/SuccessView.vala',
+    'Views/UpToDateView.vala',
+    'Views/WarningView.vala',
+    'Views/WelcomeView.vala',
+    'Widgets/Terminal.vala',
     'Plug.vala',
 ]
 
