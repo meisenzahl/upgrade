@@ -40,11 +40,13 @@ public class Upgrade.DistUpgrade {
             cmd = "test";
         }
 
+        Inhibitor.get_instance ().inhibit ();
         if (!run ("pkexec %s/io.elementary.upgrade.helper --%s --current %s --next %s".printf (
             Config.PKGDATADIR, cmd, Utils.get_current_channel (), Utils.get_next_channel ())
         )) {
             on_error ();
         }
+        Inhibitor.get_instance ().uninhibit ();
     }
 
     private bool authenticate () {

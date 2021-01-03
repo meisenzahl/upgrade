@@ -1,16 +1,16 @@
 common_sources = [
-    'Helpers/Inhibitor.vala',
-    'Helpers/StatusParser.vala',
     'Interfaces/UpgradeInterface.vala',
     'Objects/Status.vala',
     'Objects/Step.vala',
-    'Upgrade.vala',
     'Utils.vala',
 ]
 
 daemon_sources = [
+    'Helpers/StatusParser.vala',
+    'Helpers/Inhibitor.vala',
     'Services/UpgradeService.vala',
     'Daemon.vala',
+    'Upgrade.vala',
     'SessionManager.vala',
 ]
 
@@ -23,7 +23,6 @@ plug_sources = [
     'Views/UpToDateView.vala',
     'Views/WarningView.vala',
     'Views/WelcomeView.vala',
-    'Widgets/Terminal.vala',
     'Plug.vala',
 ]
 

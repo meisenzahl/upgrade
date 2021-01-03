@@ -20,8 +20,8 @@
  */
 
 public class UpgradeClient : Object {
-    public signal void status_changed (string step, int percent);
-    public signal void error ();
+    public signal void on_status (Upgrade.Status status);
+    public signal void on_error ();
 
     private UpgradeInterface interface;
 
@@ -44,8 +44,13 @@ public class UpgradeClient : Object {
         try {
             interface = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.update.daemon", "/io/elementary/update.daemon", DBusProxyFlags.NONE);
 
-            interface.status_changed.connect ((step, percent) => { status_changed (step, percent); });
-            interface.error.connect (() => { error (); });
+            interface.status_changed.connect ((step, percent) => {
+                on_status (new Upgrade.Status () {
+                    step = Upgrade.Step.from_string (step),
+                    percent = percent
+                });
+            });
+            interface.error.connect (() => { on_error (); });
         } catch (Error e) {
             warning ("Could not connect to prefers color scheme settings: %s", e.message);
         }

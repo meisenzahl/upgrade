@@ -84,7 +84,7 @@ public class Upgrade.Plug : Switchboard.Plug {
         progress_view.on_success.connect (() => load_success_view ());
 
         progress_view.on_error.connect (() => {
-            load_error_view (progress_view.terminal_view.buffer);
+            load_error_view ();
         });
         progress_view.start_upgrade ();
     }
@@ -99,12 +99,12 @@ public class Upgrade.Plug : Switchboard.Plug {
         stack.visible_child = success_view;
     }
 
-    private void load_error_view (Gtk.TextBuffer buffer) {
+    private void load_error_view () {
         if (error_view != null) {
             error_view.destroy ();
         }
 
-        error_view = new ErrorView (buffer);
+        error_view = new ErrorView ();
 
         error_view.cancel.connect (() => {
             load_welcome_view ();
