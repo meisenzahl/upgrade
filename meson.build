@@ -14,6 +14,7 @@ granite_dep = dependency('granite')
 gtk_dep = dependency('gtk+-3.0')
 polkit_dep = dependency('polkit-gobject-1')
 posix_dep = meson.get_compiler('vala').find_library('posix')
+switchboard_dep = dependency('switchboard-2.0')
 
 polkit_actiondir = polkit_dep.get_pkgconfig_variable('actiondir', define_variable: ['prefix', prefix])
 
@@ -27,6 +28,10 @@ app_dependencies = [
 daemon_dependencies = [
     polkit_dep,
     posix_dep,
+]
+
+plug_dependencies = [
+    switchboard_dep,
 ]
 
 configuration_data = configuration_data()
