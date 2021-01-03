@@ -23,6 +23,7 @@ app_sources = [
 daemon_sources = [
     'Services/DBusServer.vala',
     'Daemon.vala',
+    'SessionManager.vala',
 ]
 
 config_file = configure_file(

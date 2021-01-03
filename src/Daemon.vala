@@ -25,22 +25,35 @@ public class Upgrade.Daemon : GLib.Application {
         { null }
     };
 
+    private SessionClient? session_client;
     private uint registration_id = 0;
 
     construct {
-        application_id = "io.elementary.upgrade";
+        application_id = "io.elementary.upgrade.daemon";
         add_main_option_entries (UPGRADE_OPTIONS);
     }
 
     public override void activate () {
+        register_with_session_manager.begin ();
+
         hold ();
+    }
+
+    private async bool register_with_session_manager () {
+        session_client = yield register_with_session (application_id);
+
+        session_client.query_end_session.connect (() => end_session (false));
+        session_client.end_session.connect (() => end_session (false));
+        session_client.stop.connect (() => end_session (true));
+
+        return true;
     }
 
     public override bool dbus_register (DBusConnection connection, string object_path) throws Error {
         base.dbus_register (connection, object_path);
 
         try {
-            registration_id = connection.register_object ("/io/elementary/upgrade", DBusServer.get_default ());
+            registration_id = connection.register_object ("/io/elementary/upgrade/daemon", DBusServer.get_default ());
         } catch (Error e) {
             warning (e.message);
         }
@@ -55,6 +68,19 @@ public class Upgrade.Daemon : GLib.Application {
         }
 
         base.dbus_unregister (connection, object_path);
+    }
+
+    void end_session (bool quit) {
+        if (quit) {
+            release ();
+            return;
+        }
+
+        try {
+            session_client.end_session_response (true, "");
+        } catch (Error e) {
+            warning ("Unable to respond to session manager: %s", e.message);
+        }
     }
 
     public static int main (string[] args) {
