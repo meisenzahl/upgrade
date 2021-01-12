@@ -20,82 +20,82 @@ msgstr ""
 #: src/MainWindow.vala:37
 #, c-format
 msgid "Upgrade %s"
-msgstr ""
+msgstr "Upgrade %s"
 
 #: src/Utils.vala:124
 msgid "Test mode reboot"
-msgstr ""
+msgstr "Testmodus opnieuw opstarten"
 
 #: src/Views/AbstractUpgradeView.vala:54
 msgid "Cancel Upgrade"
-msgstr ""
+msgstr "Upgrade Annuleren"
 
 #: src/Views/AbstractUpgradeView.vala:63
 msgid "Test Mode"
-msgstr ""
+msgstr "Testmodus"
 
 #: src/Views/ErrorView.vala:37
 msgid "Could Not Upgrade"
-msgstr ""
+msgstr "Kon Niet Upgraden"
 
 #: src/Views/ErrorView.vala:46
 #, c-format
 msgid "Upgrade to %s failed. Your device may not restart properly."
-msgstr ""
+msgstr "Upgrade naar %s is mislukt. Uw apparaat start mogelijk niet correct opnieuw op."
 
 #: src/Views/ErrorView.vala:56
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: src/Views/ProgressView.vala:175
 msgid "Preparing to upgrade"
-msgstr ""
+msgstr "Upgrade Voorbereiden"
 
 #: src/Views/ProgressView.vala:179
 msgid "Setting new software channels"
-msgstr ""
+msgstr "Nieuwe softwarekanalen instellen"
 
 #: src/Views/ProgressView.vala:183
 msgid "Getting new packages"
-msgstr ""
+msgstr "Nieuwe pakketten ophalen"
 
 #: src/Views/ProgressView.vala:187
 msgid "Installing the upgrades"
-msgstr ""
+msgstr "De upgrades installeren"
 
 #: src/Views/ProgressView.vala:191
 msgid "Cleaning up"
-msgstr ""
+msgstr "Opruimen"
 
 #: src/Views/SuccessView.vala:32
 msgid "Upgrade was successful"
-msgstr ""
+msgstr "De upgrade is gelukt"
 
 #: src/Views/SuccessView.vala:42
 #, c-format
 msgid "Upgrade to %s was successfull. You may want to restart your device now."
-msgstr ""
+msgstr "Upgrade naar %s is gelukt. Misschien wilt u uw apparaat nu opnieuw opstarten."
 
 #: src/Views/SuccessView.vala:64
 msgid "Restart Device"
-msgstr ""
+msgstr "Herstart apparaat"
 
 #: src/Views/WarningView.vala:36
 msgid "Make sure you’re ready to upgrade"
-msgstr ""
+msgstr "Zorg ervoor dat u klaar bent om te upgraden"
 
 #: src/Views/WarningView.vala:45
 msgid "Before you upgrade, we recommend that you back up your data"
-msgstr ""
+msgstr "Voordat u een upgrade uitvoert, raden we u aan een back-up van uw gegevens te maken"
 
 #: src/Views/WarningView.vala:46
 msgid "To prevent data loss close all open applications and documents"
-msgstr ""
+msgstr "Sluit alle geopende applicaties en documenten om gegevensverlies te voorkomen"
 
 #: src/Views/WarningView.vala:69
 msgid "Start upgrade"
-msgstr ""
+msgstr "Start de upgrade"
 
 #: src/Views/WelcomeView.vala:49
 msgid "Continue"
-msgstr ""
+msgstr "Volgende"
