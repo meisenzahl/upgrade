@@ -20,82 +20,82 @@ msgstr ""
 #: src/MainWindow.vala:37
 #, c-format
 msgid "Upgrade %s"
-msgstr ""
+msgstr "Αναβάθμιση %s"
 
 #: src/Utils.vala:124
 msgid "Test mode reboot"
-msgstr ""
+msgstr "Επανεκκίνηση Δοκιμαστικής Λειτουρίας"
 
 #: src/Views/AbstractUpgradeView.vala:54
 msgid "Cancel Upgrade"
-msgstr ""
+msgstr "Ακύρωση αναβάθμισης"
 
 #: src/Views/AbstractUpgradeView.vala:63
 msgid "Test Mode"
-msgstr ""
+msgstr "Δοκιμαστική Λειτουργία"
 
 #: src/Views/ErrorView.vala:37
 msgid "Could Not Upgrade"
-msgstr ""
+msgstr "Αδυναμία Αναβάθμισης"
 
 #: src/Views/ErrorView.vala:46
 #, c-format
 msgid "Upgrade to %s failed. Your device may not restart properly."
-msgstr ""
+msgstr "Η αναβάθμιση στην έκδοση %s απέτυχε. Η συσκευή σας μπορεί να μην επανεκκινήσει σωστά."
 
 #: src/Views/ErrorView.vala:56
 msgid "Details"
-msgstr ""
+msgstr "Λεπτομέρειες"
 
 #: src/Views/ProgressView.vala:175
 msgid "Preparing to upgrade"
-msgstr ""
+msgstr "Προετοιμασία για αναβάθμιση"
 
 #: src/Views/ProgressView.vala:179
 msgid "Setting new software channels"
-msgstr ""
+msgstr "Ρύθμιση νέων καναλιών λογισμικού"
 
 #: src/Views/ProgressView.vala:183
 msgid "Getting new packages"
-msgstr ""
+msgstr "Ανάκτηση νέων πακέτων"
 
 #: src/Views/ProgressView.vala:187
 msgid "Installing the upgrades"
-msgstr ""
+msgstr "Εγκατάσταση των αναβαθμίσεων"
 
 #: src/Views/ProgressView.vala:191
 msgid "Cleaning up"
-msgstr ""
+msgstr "Καθάρισμα"
 
 #: src/Views/SuccessView.vala:32
 msgid "Upgrade was successful"
-msgstr ""
+msgstr "Η αναβάθμιση ήταν επιτυχής"
 
 #: src/Views/SuccessView.vala:42
 #, c-format
 msgid "Upgrade to %s was successfull. You may want to restart your device now."
-msgstr ""
+msgstr "Η αναβάθμιση στην έκδοση %s ήταν επιτυχής. Μπορείτε τώρα να επανεκκινήσετε τη συσκευή σας."
 
 #: src/Views/SuccessView.vala:64
 msgid "Restart Device"
-msgstr ""
+msgstr "Επανεκκίνη Συσκευής"
 
 #: src/Views/WarningView.vala:36
 msgid "Make sure you’re ready to upgrade"
-msgstr ""
+msgstr "Επιβεβαιωθείτε ότι είστε έτοιμος να αναβαθμίσετε"
 
 #: src/Views/WarningView.vala:45
 msgid "Before you upgrade, we recommend that you back up your data"
-msgstr ""
+msgstr "Προτού αναβαθμίσετε, σας συνιστούμε να κάνετε backup τα αρχεία σας"
 
 #: src/Views/WarningView.vala:46
 msgid "To prevent data loss close all open applications and documents"
-msgstr ""
+msgstr "Για αποφύγη απώλειας δεδομένων κλείστε όλες τις ανοικτές εφαρμογές και αρχεία"
 
 #: src/Views/WarningView.vala:69
 msgid "Start upgrade"
-msgstr ""
+msgstr "Εκκίνηση αναβάθμισης"
 
 #: src/Views/WelcomeView.vala:49
 msgid "Continue"
-msgstr ""
+msgstr "Συνέχεια"
