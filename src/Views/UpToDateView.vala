@@ -34,7 +34,7 @@ public class UpToDateView : AbstractUpgradeView {
         var heading = new Gtk.Label (Utils.get_pretty_name ());
         heading.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var description = new Gtk.Label ("%s is up to date.".printf (Utils.get_name ()));
+        var description = new Gtk.Label (_("%s is up to date.").printf (Utils.get_name ()));
 
         content_area.margin_end = 22;
         content_area.margin_start = 22;
