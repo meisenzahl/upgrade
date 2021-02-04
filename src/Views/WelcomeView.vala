@@ -36,7 +36,7 @@ public class WelcomeView : AbstractUpgradeView {
         var heading = new Gtk.Label (Utils.get_next_pretty_name ());
         heading.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
 
-        var description = new Gtk.Label (_("To set up the installation of %s, click Continue.").printf (Utils.get_next_pretty_name ()));
+        var description = new Gtk.Label (_("To set up the installation of %s, click 'Continue'.").printf (Utils.get_next_pretty_name ()));
 
         content_area.margin_end = 22;
         content_area.margin_start = 22;
