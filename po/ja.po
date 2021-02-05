@@ -1,15 +1,15 @@
 # Japanese translations for io.elementary.upgrade package.
 # Copyright (C) 2021 THE io.elementary.upgrade'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the io.elementary.upgrade package.
-# Automatically generated, 2021.
+# Ryo Nakano <ryonakaknock3@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.upgrade\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-02 10:06+0100\n"
-"PO-Revision-Date: 2021-01-01 11:12+0100\n"
-"Last-Translator: Automatically generated\n"
+"POT-Creation-Date: 2021-02-05 21:17+0900\n"
+"PO-Revision-Date: 2021-02-05 21:18+0900\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -20,82 +20,98 @@ msgstr ""
 #: src/MainWindow.vala:37
 #, c-format
 msgid "Upgrade %s"
-msgstr ""
+msgstr "%s をアップグレード"
 
 #: src/Utils.vala:124
 msgid "Test mode reboot"
-msgstr ""
+msgstr "テストモードで再起動"
 
 #: src/Views/AbstractUpgradeView.vala:54
 msgid "Cancel Upgrade"
-msgstr ""
+msgstr "アップグレードをキャンセル"
 
 #: src/Views/AbstractUpgradeView.vala:63
 msgid "Test Mode"
-msgstr ""
+msgstr "テストモード"
 
 #: src/Views/ErrorView.vala:37
 msgid "Could Not Upgrade"
-msgstr ""
+msgstr "アップグレードできませんでした"
 
 #: src/Views/ErrorView.vala:46
 #, c-format
 msgid "Upgrade to %s failed. Your device may not restart properly."
 msgstr ""
+"%s にアップグレードできませんでした。お使いのデバイスは適切に再起動しない可能"
+"性があります。"
 
 #: src/Views/ErrorView.vala:56
 msgid "Details"
-msgstr ""
+msgstr "詳細"
 
-#: src/Views/ProgressView.vala:175
+#: src/Views/ProgressView.vala:149
 msgid "Preparing to upgrade"
-msgstr ""
+msgstr "アップグレードの準備をしています"
 
-#: src/Views/ProgressView.vala:179
+#: src/Views/ProgressView.vala:153
 msgid "Setting new software channels"
-msgstr ""
+msgstr "新しいソフトウェアチャンネルを設定しています"
 
-#: src/Views/ProgressView.vala:183
+#: src/Views/ProgressView.vala:157
 msgid "Getting new packages"
-msgstr ""
+msgstr "新しいパッケージを取得しています"
 
-#: src/Views/ProgressView.vala:187
+#: src/Views/ProgressView.vala:161
 msgid "Installing the upgrades"
-msgstr ""
+msgstr "アップグレードをインストールしています"
 
-#: src/Views/ProgressView.vala:191
+#: src/Views/ProgressView.vala:165
 msgid "Cleaning up"
-msgstr ""
+msgstr "クリーンアップしています"
 
 #: src/Views/SuccessView.vala:32
 msgid "Upgrade was successful"
-msgstr ""
+msgstr "アップグレードが完了しました"
 
 #: src/Views/SuccessView.vala:42
 #, c-format
 msgid "Upgrade to %s was successfull. You may want to restart your device now."
 msgstr ""
+"%s へのアップグレードが完了しました。お使いのデバイスを今すぐ再起動することを"
+"推奨します。"
 
 #: src/Views/SuccessView.vala:64
 msgid "Restart Device"
-msgstr ""
+msgstr "デバイスを再起動"
+
+#: src/Views/UpToDateView.vala:37
+#, c-format
+msgid "%s is up to date."
+msgstr "%s は最新の状態です。"
 
 #: src/Views/WarningView.vala:36
 msgid "Make sure you’re ready to upgrade"
-msgstr ""
+msgstr "アップグレードの準備ができているか確認してください"
 
 #: src/Views/WarningView.vala:45
 msgid "Before you upgrade, we recommend that you back up your data"
-msgstr ""
+msgstr "アップグレードの前に、データのバックアップを推奨します"
 
 #: src/Views/WarningView.vala:46
 msgid "To prevent data loss close all open applications and documents"
 msgstr ""
+"データが失われないように、開いているアプリケーションとドキュメントをすべて閉"
+"じてください"
 
 #: src/Views/WarningView.vala:69
 msgid "Start upgrade"
-msgstr ""
+msgstr "アップグレードを開始"
+
+#: src/Views/WelcomeView.vala:39
+#, c-format
+msgid "To set up the installation of %s, click 'Continue'."
+msgstr "%s のインストールを開始するには、'続行' をクリックしてください。"
 
 #: src/Views/WelcomeView.vala:49
 msgid "Continue"
-msgstr ""
+msgstr "続行"
