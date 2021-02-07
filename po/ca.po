@@ -19,82 +19,82 @@ msgstr ""
 #: src/MainWindow.vala:37
 #, c-format
 msgid "Upgrade %s"
-msgstr ""
+msgstr "Actualitzar %s"
 
 #: src/Utils.vala:124
 msgid "Test mode reboot"
-msgstr ""
+msgstr "Reinici del mode de prova"
 
 #: src/Views/AbstractUpgradeView.vala:54
 msgid "Cancel Upgrade"
-msgstr ""
+msgstr "Cancel·lar actualització"
 
 #: src/Views/AbstractUpgradeView.vala:63
 msgid "Test Mode"
-msgstr ""
+msgstr "Mode de prova"
 
 #: src/Views/ErrorView.vala:37
 msgid "Could Not Upgrade"
-msgstr ""
+msgstr "No s'ha pogut actualitzar"
 
 #: src/Views/ErrorView.vala:46
 #, c-format
 msgid "Upgrade to %s failed. Your device may not restart properly."
-msgstr ""
+msgstr "Ha fallat l'actualització a %s. És possible que el vostre dispositiu no es reiniciï correctament."
 
 #: src/Views/ErrorView.vala:56
 msgid "Details"
-msgstr ""
+msgstr "Detalls"
 
 #: src/Views/ProgressView.vala:175
 msgid "Preparing to upgrade"
-msgstr ""
+msgstr "S'està preparant per actualitzar"
 
 #: src/Views/ProgressView.vala:179
 msgid "Setting new software channels"
-msgstr ""
+msgstr "Configuració de nous canals de software"
 
 #: src/Views/ProgressView.vala:183
 msgid "Getting new packages"
-msgstr ""
+msgstr "Obtenint nous paquets"
 
 #: src/Views/ProgressView.vala:187
 msgid "Installing the upgrades"
-msgstr ""
+msgstr "Instal·lació de les actualitzacions"
 
 #: src/Views/ProgressView.vala:191
 msgid "Cleaning up"
-msgstr ""
+msgstr "Netejant"
 
 #: src/Views/SuccessView.vala:32
 msgid "Upgrade was successful"
-msgstr ""
+msgstr "Es va actualitzar amb èxit"
 
 #: src/Views/SuccessView.vala:42
 #, c-format
 msgid "Upgrade to %s was successfull. You may want to restart your device now."
-msgstr ""
+msgstr "L'actualització a %s s'ha realitzat correctament. És possible que vulgueu reiniciar el dispositiu ara."
 
 #: src/Views/SuccessView.vala:64
 msgid "Restart Device"
-msgstr ""
+msgstr "Reiniciar el dispositiu"
 
 #: src/Views/WarningView.vala:36
 msgid "Make sure you’re ready to upgrade"
-msgstr ""
+msgstr "Assegureu-vos que esteu a punt per actualitzar"
 
 #: src/Views/WarningView.vala:45
 msgid "Before you upgrade, we recommend that you back up your data"
-msgstr ""
+msgstr "Abans d'actualitzar, us recomanem que feu una còpia de seguretat de les vostres dades"
 
 #: src/Views/WarningView.vala:46
 msgid "To prevent data loss close all open applications and documents"
-msgstr ""
+msgstr "Per evitar la pèrdua de dades, tanqueu totes les aplicacions i documents oberts"
 
 #: src/Views/WarningView.vala:69
 msgid "Start upgrade"
-msgstr ""
+msgstr "Començar actualizació"
 
 #: src/Views/WelcomeView.vala:49
 msgid "Continue"
-msgstr ""
+msgstr "Continua"
