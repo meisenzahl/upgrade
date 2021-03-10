@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.upgrade\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-02 10:06+0100\n"
+"POT-Creation-Date: 2021-03-10 19:50+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,23 +47,23 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: src/Views/ProgressView.vala:175
+#: src/Views/ProgressView.vala:149
 msgid "Preparing to upgrade"
 msgstr ""
 
-#: src/Views/ProgressView.vala:179
+#: src/Views/ProgressView.vala:153
 msgid "Setting new software channels"
 msgstr ""
 
-#: src/Views/ProgressView.vala:183
+#: src/Views/ProgressView.vala:157
 msgid "Getting new packages"
 msgstr ""
 
-#: src/Views/ProgressView.vala:187
+#: src/Views/ProgressView.vala:161
 msgid "Installing the upgrades"
 msgstr ""
 
-#: src/Views/ProgressView.vala:191
+#: src/Views/ProgressView.vala:165
 msgid "Cleaning up"
 msgstr ""
 
@@ -80,6 +80,11 @@ msgstr ""
 msgid "Restart Device"
 msgstr ""
 
+#: src/Views/UpToDateView.vala:37
+#, c-format
+msgid "%s is up to date."
+msgstr ""
+
 #: src/Views/WarningView.vala:36
 msgid "Make sure you’re ready to upgrade"
 msgstr ""
@@ -94,6 +99,11 @@ msgstr ""
 
 #: src/Views/WarningView.vala:69
 msgid "Start upgrade"
+msgstr ""
+
+#: src/Views/WelcomeView.vala:39
+#, c-format
+msgid "To set up the installation of %s, click 'Continue'."
 msgstr ""
 
 #: src/Views/WelcomeView.vala:49

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.upgrade\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-02 10:06+0100\n"
-"PO-Revision-Date: 2021-01-01 11:12+0100\n"
-"Last-Translator: Automatically generated\n"
+"POT-Creation-Date: 2021-03-10 19:47+0400\n"
+"PO-Revision-Date: 2021-03-10 19:51+0400\n"
+"Last-Translator: Andrey Kultyapov <camellan@yandex.ru>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -17,86 +17,103 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: src/MainWindow.vala:37
 #, c-format
 msgid "Upgrade %s"
-msgstr ""
+msgstr "Обновление %s"
 
 #: src/Utils.vala:124
 msgid "Test mode reboot"
-msgstr ""
+msgstr "Перезагрузка в тестовом режиме"
 
 #: src/Views/AbstractUpgradeView.vala:54
 msgid "Cancel Upgrade"
-msgstr ""
+msgstr "Отменить обновление"
 
 #: src/Views/AbstractUpgradeView.vala:63
 msgid "Test Mode"
-msgstr ""
+msgstr "Тестовый режим"
 
 #: src/Views/ErrorView.vala:37
 msgid "Could Not Upgrade"
-msgstr ""
+msgstr "Не удалось обновить"
 
 #: src/Views/ErrorView.vala:46
 #, c-format
 msgid "Upgrade to %s failed. Your device may not restart properly."
 msgstr ""
+"Не удалось выполнить обновление до %s. Ваше устройство может не "
+"перезагрузиться должным образом."
 
 #: src/Views/ErrorView.vala:56
 msgid "Details"
-msgstr ""
+msgstr "Подробности"
 
-#: src/Views/ProgressView.vala:175
+#: src/Views/ProgressView.vala:149
 msgid "Preparing to upgrade"
-msgstr ""
+msgstr "Подготовка к обновлению"
 
-#: src/Views/ProgressView.vala:179
+#: src/Views/ProgressView.vala:153
 msgid "Setting new software channels"
-msgstr ""
+msgstr "Установка новых источников программ"
 
-#: src/Views/ProgressView.vala:183
+#: src/Views/ProgressView.vala:157
 msgid "Getting new packages"
-msgstr ""
+msgstr "Получение новых пакетов"
 
-#: src/Views/ProgressView.vala:187
+#: src/Views/ProgressView.vala:161
 msgid "Installing the upgrades"
-msgstr ""
+msgstr "Установка обновлений"
 
-#: src/Views/ProgressView.vala:191
+#: src/Views/ProgressView.vala:165
 msgid "Cleaning up"
-msgstr ""
+msgstr "Очистка"
 
 #: src/Views/SuccessView.vala:32
 msgid "Upgrade was successful"
-msgstr ""
+msgstr "Обновление прошло успешно"
 
 #: src/Views/SuccessView.vala:42
 #, c-format
 msgid "Upgrade to %s was successfull. You may want to restart your device now."
 msgstr ""
+"Обновление до %s выполнено успешно. Возможно, вы захотите перезагрузить "
+"устройство сейчас."
 
 #: src/Views/SuccessView.vala:64
 msgid "Restart Device"
-msgstr ""
+msgstr "Перезагрузить устройство"
+
+#: src/Views/UpToDateView.vala:37
+#, c-format
+msgid "%s is up to date."
+msgstr "%s в актуальном состоянии."
 
 #: src/Views/WarningView.vala:36
 msgid "Make sure you’re ready to upgrade"
-msgstr ""
+msgstr "Убедитесь, что вы готовы к обновлению"
 
 #: src/Views/WarningView.vala:45
 msgid "Before you upgrade, we recommend that you back up your data"
-msgstr ""
+msgstr "Перед обновлением рекомендуется сделать резервную копию данных"
 
 #: src/Views/WarningView.vala:46
 msgid "To prevent data loss close all open applications and documents"
 msgstr ""
+"Чтобы предотвратить потерю данных, закройте все открытые приложения и "
+"документы"
 
 #: src/Views/WarningView.vala:69
 msgid "Start upgrade"
-msgstr ""
+msgstr "Начать обновление"
+
+#: src/Views/WelcomeView.vala:39
+#, c-format
+msgid "To set up the installation of %s, click 'Continue'."
+msgstr "Чтобы настроить установку %s, нажмите 'Продолжить'."
 
 #: src/Views/WelcomeView.vala:49
 msgid "Continue"
-msgstr ""
+msgstr "Продолжить"
