@@ -8,27 +8,28 @@ msgstr ""
 "Project-Id-Version: io.elementary.upgrade\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-01-02 10:06+0100\n"
-"PO-Revision-Date: 2021-01-01 11:12+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2021-03-25 13:36+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: src/MainWindow.vala:37
 #, c-format
 msgid "Upgrade %s"
-msgstr "Upgrade %s"
+msgstr "%s opwaarderen"
 
 #: src/Utils.vala:124
 msgid "Test mode reboot"
-msgstr "Testmodus opnieuw opstarten"
+msgstr "Testmodus opnieuw starten"
 
 #: src/Views/AbstractUpgradeView.vala:54
 msgid "Cancel Upgrade"
-msgstr "Upgrade Annuleren"
+msgstr "Opwaarderen afbreken"
 
 #: src/Views/AbstractUpgradeView.vala:63
 msgid "Test Mode"
@@ -36,12 +37,14 @@ msgstr "Testmodus"
 
 #: src/Views/ErrorView.vala:37
 msgid "Could Not Upgrade"
-msgstr "Kon Niet Upgraden"
+msgstr "Opwaarderen mislukt"
 
 #: src/Views/ErrorView.vala:46
 #, c-format
 msgid "Upgrade to %s failed. Your device may not restart properly."
-msgstr "Upgrade naar %s is mislukt. Uw apparaat start mogelijk niet correct opnieuw op."
+msgstr ""
+"Het opwaarderen naar %s is mislukt - je apparaat start mogelijk niet goed "
+"meer op."
 
 #: src/Views/ErrorView.vala:56
 msgid "Details"
@@ -49,53 +52,55 @@ msgstr "Details"
 
 #: src/Views/ProgressView.vala:175
 msgid "Preparing to upgrade"
-msgstr "Upgrade Voorbereiden"
+msgstr "Bezig met voorbereiden"
 
 #: src/Views/ProgressView.vala:179
 msgid "Setting new software channels"
-msgstr "Nieuwe softwarekanalen instellen"
+msgstr "Bezig met instellen van nieuwe softwarekanalen"
 
 #: src/Views/ProgressView.vala:183
 msgid "Getting new packages"
-msgstr "Nieuwe pakketten ophalen"
+msgstr "Bezig met ophalen van nieuwe pakketten"
 
 #: src/Views/ProgressView.vala:187
 msgid "Installing the upgrades"
-msgstr "De upgrades installeren"
+msgstr "Bezig met installeren van opwaarderingen"
 
 #: src/Views/ProgressView.vala:191
 msgid "Cleaning up"
-msgstr "Opruimen"
+msgstr "Bezig met opruimen"
 
 #: src/Views/SuccessView.vala:32
 msgid "Upgrade was successful"
-msgstr "De upgrade is gelukt"
+msgstr "Het opwaarderen is voltooid"
 
 #: src/Views/SuccessView.vala:42
 #, c-format
 msgid "Upgrade to %s was successfull. You may want to restart your device now."
-msgstr "Upgrade naar %s is gelukt. Misschien wilt u uw apparaat nu opnieuw opstarten."
+msgstr "Het opwaarderen naar %s is voltooid - start je apparaat opnieuw op."
 
 #: src/Views/SuccessView.vala:64
 msgid "Restart Device"
-msgstr "Herstart apparaat"
+msgstr "Opnieuw opstarten"
 
 #: src/Views/WarningView.vala:36
 msgid "Make sure you’re ready to upgrade"
-msgstr "Zorg ervoor dat u klaar bent om te upgraden"
+msgstr "Zorg ervoor dat je klaar bent om op te waarderen"
 
 #: src/Views/WarningView.vala:45
 msgid "Before you upgrade, we recommend that you back up your data"
-msgstr "Voordat u een upgrade uitvoert, raden we u aan een back-up van uw gegevens te maken"
+msgstr "We raden aan om een back-up van je gegevens te maken"
 
 #: src/Views/WarningView.vala:46
 msgid "To prevent data loss close all open applications and documents"
-msgstr "Sluit alle geopende applicaties en documenten om gegevensverlies te voorkomen"
+msgstr ""
+"Sluit alle geopende toepassingen en documenten om gegevensverlies te "
+"voorkomen"
 
 #: src/Views/WarningView.vala:69
 msgid "Start upgrade"
-msgstr "Start de upgrade"
+msgstr "Opwaarderen starten"
 
 #: src/Views/WelcomeView.vala:49
 msgid "Continue"
-msgstr "Volgende"
+msgstr "Doorgaan"
