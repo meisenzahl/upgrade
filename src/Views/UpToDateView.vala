@@ -20,10 +20,6 @@
  */
 
 public class UpToDateView : AbstractUpgradeView {
-    public UpToDateView () {
-        Object (cancellable: true);
-    }
-
     construct {
         var logo = new Gtk.Image () {
             icon_name = "distributor-logo",

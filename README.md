@@ -13,6 +13,7 @@ You'll need the following dependencies:
  - libgranite-dev
  - libgtk-3-dev
  - libpolkit-gobject-1-dev
+ - libswitchboard-2.0-dev
  - valac
 
 Run `meson build` to configure the build environment. Change to the build directory and run `ninja test` to build and run automated tests.

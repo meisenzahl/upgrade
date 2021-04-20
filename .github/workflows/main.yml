@@ -15,7 +15,7 @@ jobs:
     - name: Install Dependencies
       run: |
         apt update
-        apt install -y libgranite-dev libpolkit-gobject-1-dev meson policykit-1 valac
+        apt install -y libgranite-dev libpolkit-gobject-1-dev libswitchboard-2.0-dev meson policykit-1 valac
     - name: Build
       env:
         DESTDIR: out

@@ -20,12 +20,10 @@
  */
 
 public class ErrorView : AbstractUpgradeView {
-    public Gtk.TextBuffer buffer { get; construct; }
 
-    public ErrorView (Gtk.TextBuffer buffer) {
+    public ErrorView () {
         Object (
-            cancellable: true,
-            buffer: buffer
+            cancellable: true
         );
     }
 
@@ -50,28 +48,12 @@ public class ErrorView : AbstractUpgradeView {
             use_markup = true
         };
 
-        var terminal_button = new Gtk.ToggleButton () {
-            always_show_image = true,
-            halign = Gtk.Align.START,
-            label = _("Details"),
-            margin_top = 18,
-            image = new Gtk.Image.from_icon_name ("utilities-terminal-symbolic", Gtk.IconSize.SMALL_TOOLBAR)
-        };
-        terminal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-
-        var terminal_view = new Upgrade.Terminal (buffer);
-
-        var terminal_revealer = new Gtk.Revealer ();
-        terminal_revealer.add (terminal_view);
-
         var grid = new Gtk.Grid () {
             orientation = Gtk.Orientation.VERTICAL,
             row_spacing = 6,
             valign = Gtk.Align.CENTER
         };
         grid.add (description_label);
-        grid.add (terminal_button);
-        grid.add (terminal_revealer);
 
         content_area.column_homogeneous = true;
         content_area.halign = Gtk.Align.CENTER;
@@ -79,13 +61,6 @@ public class ErrorView : AbstractUpgradeView {
         content_area.attach (image, 0, 0);
         content_area.attach (title_label, 0, 1);
         content_area.attach (grid, 1, 0, 1, 2);
-
-        terminal_button.toggled.connect (() => {
-            terminal_revealer.reveal_child = terminal_button.active;
-            if (terminal_button.active) {
-                terminal_view.attempt_scroll ();
-            }
-        });
 
         show_all ();
     }

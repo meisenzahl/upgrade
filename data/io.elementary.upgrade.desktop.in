@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Upgrade elementary OS
-Comment=Upgrade elementary OS to the latest version
-Exec=io.elementary.upgrade
-Icon=system-os-installer
-Terminal=false
-Type=Application
-StartupNotify=true
-Categories=GNOME;GTK;System;

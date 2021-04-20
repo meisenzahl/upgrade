@@ -22,10 +22,6 @@
 public class WelcomeView : AbstractUpgradeView {
     public signal void next_step ();
 
-    public WelcomeView () {
-        Object (cancellable: true);
-    }
-
     construct {
         var logo = new Gtk.Image () {
             icon_name = "distributor-logo",

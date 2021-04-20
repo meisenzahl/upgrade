@@ -20,23 +20,22 @@
  */
 
 [DBus (name="io.elementary.upgrade")]
-public class DBusServer : Object {
+public class UpgradeService : Object {
     private Upgrade.DistUpgrade dist_upgrade;
     private bool is_upgrade_running = false;
 
-    private static GLib.Once<DBusServer> instance;
-    public static unowned DBusServer get_default () {
-        return instance.once (() => { return new DBusServer (); });
+    private static GLib.Once<UpgradeService> instance;
+    public static unowned UpgradeService get_default () {
+        return instance.once (() => { return new UpgradeService (); });
     }
 
-    private DBusServer () {
+    private UpgradeService () {
         dist_upgrade = new Upgrade.DistUpgrade ();
         dist_upgrade.on_error.connect (upgrade_error_callback);
         dist_upgrade.on_status.connect (upgrade_status_callback);
     }
 
     public signal void status_changed (string step, int percent);
-
     public signal void error ();
 
     public void upgrade () throws Error {

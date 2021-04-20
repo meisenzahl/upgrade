@@ -19,29 +19,10 @@
  * Authored by: Marius Meisenzahl <mariusmeisenzahl@gmail.com>
  */
 
-public class Upgrade.App : Gtk.Application {
-    public const OptionEntry[] UPGRADE_OPTIONS = {
-        { "test", 't', 0, OptionArg.NONE, out Config.test_mode, "Non-destructive test mode", null},
-        { null }
-    };
+[DBus (name="io.elementary.upgrade")]
+public interface UpgradeInterface : Object {
+    public signal void status_changed (string step, int percent);
+    public signal void error ();
 
-    construct {
-        application_id = "io.elementary.upgrade";
-        flags = ApplicationFlags.FLAGS_NONE;
-        Intl.setlocale (LocaleCategory.ALL, "");
-        add_main_option_entries (UPGRADE_OPTIONS);
-    }
-
-    public override void activate () {
-        var window = new MainWindow ();
-        window.show_all ();
-        this.add_window (window);
-
-        Inhibitor.get_instance ().inhibit ();
-    }
-}
-
-public static int main (string[] args) {
-    var application = new Upgrade.App ();
-    return application.run (args);
+    public abstract void upgrade () throws Error;
 }
