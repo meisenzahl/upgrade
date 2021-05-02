@@ -13,5 +13,5 @@ Standards-Version: 4.1.1
 
 Package: io.elementary.upgrade
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}, python3-distupgrade
 Description: A way to upgrade open source operating systems

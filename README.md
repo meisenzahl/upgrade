@@ -14,6 +14,7 @@ You'll need the following dependencies:
  - libgtk-3-dev
  - libpolkit-gobject-1-dev
  - valac
+ - python3-distupgrade
 
 Run `meson build` to configure the build environment. Change to the build directory and run `ninja test` to build and run automated tests.
 
