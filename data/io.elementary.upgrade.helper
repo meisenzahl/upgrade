@@ -53,7 +53,7 @@ def update():
     run("apt-get update")
 
 def dist_upgrade():
-    run("apt-get --assume-yes dist-upgrade")
+    run('apt-get --assume-yes --option Dpkg::Options::="--force-confdef" --option Dpkg::Options::="--force-confold" dist-upgrade')
 
 def clean():
     run("apt-get --assume-yes clean")
