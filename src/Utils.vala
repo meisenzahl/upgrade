@@ -65,6 +65,9 @@ namespace Utils {
             case "juno":
             case "hera":
                 return "%s Odin".printf (get_name ());
+            case "odin":
+            case "jolnir":
+                return "%s 7".printf (get_name ());
         }
 
         return null;
@@ -83,6 +86,9 @@ namespace Utils {
             case "juno":
             case "hera":
                 return "bionic";
+            case "odin":
+            case "jolnir":
+                return "focal";
         }
 
         return null;
@@ -101,6 +107,9 @@ namespace Utils {
             case "juno":
             case "hera":
                 return "focal";
+            case "odin":
+            case "jolnir":
+                return "jammy";
         }
 
         return null;
