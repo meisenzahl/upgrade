@@ -1,13 +1,8 @@
-common_sources = [
+sources = [
     'Helpers/Inhibitor.vala',
     'Helpers/StatusParser.vala',
     'Objects/Status.vala',
     'Objects/Step.vala',
-    'Upgrade.vala',
-    'Utils.vala',
-]
-
-app_sources = [
     'Views/AbstractUpgradeView.vala',
     'Views/ErrorView.vala',
     'Views/ProgressView.vala',
@@ -17,12 +12,9 @@ app_sources = [
     'Views/WelcomeView.vala',
     'Widgets/Terminal.vala',
     'MainWindow.vala',
+    'Upgrade.vala',
+    'Utils.vala',
     'Application.vala',
-]
-
-daemon_sources = [
-    'Services/DBusServer.vala',
-    'Daemon.vala',
 ]
 
 config_file = configure_file(
@@ -33,18 +25,8 @@ config_file = configure_file(
 
 executable(
     meson.project_name(),
-    common_sources,
-    app_sources,
+    sources,
     config_file,
-    dependencies: app_dependencies,
-    install: true
-)
-
-executable(
-    meson.project_name() + '.daemon',
-    common_sources,
-    daemon_sources,
-    config_file,
-    dependencies: daemon_dependencies,
+    dependencies: dependencies,
     install: true
 )

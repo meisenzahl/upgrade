@@ -59,7 +59,7 @@ public abstract class AbstractUpgradeView : Gtk.Grid {
             action_area.add (cancel_button);
         }
 
-        if (Config.test_mode) {
+        if (Upgrade.App.test_mode) {
             var test_label = new Gtk.Label (_("Test Mode"));
             test_label.get_style_context ().add_class (Gtk.STYLE_CLASS_ERROR);
 

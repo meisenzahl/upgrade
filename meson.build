@@ -17,14 +17,9 @@ posix_dep = meson.get_compiler('vala').find_library('posix')
 
 polkit_actiondir = polkit_dep.get_pkgconfig_variable('actiondir', define_variable: ['prefix', prefix])
 
-app_dependencies = [
+dependencies = [
     granite_dep,
     gtk_dep,
-    polkit_dep,
-    posix_dep,
-]
-
-daemon_dependencies = [
     polkit_dep,
     posix_dep,
 ]

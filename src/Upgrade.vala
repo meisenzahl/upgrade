@@ -36,12 +36,12 @@ public class Upgrade.DistUpgrade {
         }
 
         var cmd = "upgrade";
-        if (Config.test_mode) {
+        if (App.test_mode) {
             cmd = "test";
         }
 
         if (!run ("pkexec %s/io.elementary.upgrade.helper --%s --current %s --next %s".printf (
-            Config.PKGDATADIR, cmd, Utils.get_current_channel (), Utils.get_next_channel ())
+            Build.PKGDATADIR, cmd, Utils.get_current_channel (), Utils.get_next_channel ())
         )) {
             on_error ();
         }
